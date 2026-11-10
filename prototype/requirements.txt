@@ -1,0 +1,5 @@
+streamlit==1.63.0
+qdrant-client==1.19.0
+openai==3.13.0
+pydantic==2.13.5
+requests==2.34.2

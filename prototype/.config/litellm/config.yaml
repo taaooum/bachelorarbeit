@@ -1,0 +1,20 @@
+model_list:
+  - model_name: ollama/bge-m3
+    litellm_params:
+      model: ollama/bge-m3
+      api_base: http://ollama:11434
+
+router_settings:
+  redis_host: os.environ/REDIS_HOST
+  redis_port: os.environ/REDIS_PORT
+
+litellm_settings:
+  cache: true
+  enable_redis_auth_cache: true
+  cache_params:
+    type: redis
+    host: os.environ/REDIS_HOST
+    port: os.environ/REDIS_PORT
+    namespace: prototype.litellm
+    ttl: 600
+    mode: default_on

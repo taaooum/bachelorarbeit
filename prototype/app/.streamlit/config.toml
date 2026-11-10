@@ -1,0 +1,33 @@
+[browser]
+    gatherUsageStats = false # Need to set to false to avoid sending usage stats to Streamlit
+
+[server]
+    runOnSave = true
+
+[client] # https://docs.streamlit.io/develop/api-reference/configuration/config.toml#client
+    showErrorDetails = "none"
+    toolbarMode = "developer"
+
+[theme]
+base = "light"
+primaryColor = "#18181B"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#FAFAFA"
+codeBackgroundColor = "#F4F4F5"
+textColor = "#09090B"
+linkColor = "#18181B"
+borderColor = "#E4E4E7"
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "6px"
+buttonRadius = "6px"
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+codeFontSize = "0.875rem"
+codeTextColor = "#18181B"
+baseFontSize = 14
+baseFontWeight = 400
+headingFontSizes = ["36px", "30px", "24px", "20px", "16px", "14px"]
+headingFontWeights = [600, 600, 600, 600, 600, 600]
+linkUnderline = true
+

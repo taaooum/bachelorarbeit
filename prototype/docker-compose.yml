@@ -1,0 +1,139 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: app
+    restart: always
+    depends_on:
+      ollama:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+      litellm:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8501:8501"
+    volumes:
+      # live mount for app changes
+      - ./app:/app
+      - ./.seed:/.seed
+    networks:
+      - prototype
+    environment:
+      # Use hostnames of the docker network
+      LITELLM_API_KEY: admin # must match LITELLM_MASTER_KEY
+      LITELLM_URL: http://litellm:4000 
+      LLM_MODEL: gemini/gemini-3.6-flash
+      LLM_TIMEOUT: 180
+      EMBEDDING_MODEL: ollama/bge-m3
+      EMBEDDING_SIZE: 1024
+      EMBEDDING_TIMEOUT: 180
+      QDRANT_URL: http://qdrant:6333
+      OLLAMA_URL: http://ollama:11434
+      STREAMLIT_SERVER_FILE_WATCHER_TYPE: poll
+
+  # Ai proxy for connecting to ollama and api endpoints
+  litellm:
+    image: ghcr.io/berriai/litellm-database:main-stable
+    container_name: litellm
+    restart: always
+    command:
+      - "--config=/home/node/.config/litellm/config.yaml"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      LITELLM_MASTER_KEY: admin
+      LITELLM_SALT_KEY: admin
+      UI_USERNAME: admin
+      UI_PASSWORD: admin
+      DATABASE_URL: postgresql://admin:admin@postgres:5432/litellm
+      CONFIG_FILE_PATH: /home/node/.config/litellm/config.yaml
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      STORE_MODEL_IN_DB: "True"
+    ports:
+      - "4000:4000" 
+    volumes:
+      - .config/litellm:/home/node/.config/litellm
+      - litellm_data:/home/node/.litellm
+    networks:
+      - prototype
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - prototype
+
+  # Database required by LiteLLM Admin UI
+  postgres:
+    image: postgres:18
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: litellm
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d litellm"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    volumes:
+      - .config/postgres:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - prototype
+
+  # Running LLMs locally
+  ollama:
+    build:
+      context: .
+      dockerfile: ollama/Dockerfile
+    container_name: ollama
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "ollama show bge-m3 >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - prototype
+
+  # Vector database for storing embeddings and dynamic data
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    restart: always
+    ports:
+      - "6333:6333" # HTTP Interface
+      # - "6334:6334" # gRPC Interface
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - prototype
+
+networks:
+  prototype:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  ollama_data:
+  litellm_data:
+  qdrant_data:

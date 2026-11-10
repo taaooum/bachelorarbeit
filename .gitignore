@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.venv
+env/
+venv/
+*.swp
+_*.py
+
+# IDEs
+# .vscode/
+.idea/
+.DS_Store
+.github/
+.env*
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Obsidian
+.obsidian/
+notes/*.tex
+
+# LaTeX Temporary Files
+*.aux
+*.log
+*.toc
+*.out
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.thm
+*.bcf
+*.run.xml
+*.cut
+*.lof
+*.lot
+*.bbl
+*.lol
+*.bbl
+*.listing
+*.bcf-SAVE-ERROR
+*.bbl-SAVE-ERROR
+/report/*.txt
+*.synctex(busy)
+*.minted
+_minted/
+
+# Compiled PDF files
+*.pdf 
+!thesis/figures/*.pdf
+!thesis/main.pdf
+
+# Backup files
+*.bak
+*.sav
+
+# Project specific
+design-case-study/prototype/.data
+.data*
+thesis/sections/*.txt
+*.xlsx
+
+# Streamlit Agents test
+.agents
+.claude

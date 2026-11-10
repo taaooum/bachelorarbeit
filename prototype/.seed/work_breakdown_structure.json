@@ -1,0 +1,483 @@
+[
+    {
+        "node_type": "Hauptvorgang",
+        "project_number": "V20240722-0001",
+        "customer": "Maschinenbau Reuter GmbH & Co. KG",
+        "owner": "Daniel Hoffmann",
+        "title": "ERP-Einführung Auftragsabwicklung und Einkauf",
+        "description": "Einführung eines ERP-Systems bei einem mittelständischen Sondermaschinenbauer mit rund 180 Mitarbeitenden. Enthalten sind die Prozessaufnahme, die Konfiguration der Module Vertrieb, Auftragsabwicklung, Einkauf und Lager, die Anbindung des bestehenden CAD/PDM-Systems sowie die Migration der Stamm- und Bewegungsdaten aus dem Altsystem. Nicht enthalten sind die Bereitstellung und der Betrieb der Serverplattform (durch den Kunden), die Finanzbuchhaltung sowie Lizenzkosten des ERP-Herstellers.",
+        "is_managed": true,
+        "billable": true,
+        "children": [
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20240722-0002",
+                "title": "Prozessanalyse und Fachkonzept",
+                "description": "Enthält die Aufnahme der Ist-Prozesse in Vertrieb, Auftragsabwicklung, Einkauf und Lager in moderierten Workshops, die Ableitung der Soll-Prozesse im ERP-Standard und die Erstellung eines abgestimmten Fachkonzepts mit Abnahmeszenarien je Prozess. Nicht enthalten sind die Analyse der Finanz- und Personalprozesse sowie organisatorische Veränderungsmaßnahmen beim Kunden.",
+                "estimated_hours": 160,
+                "documented_hours": 172,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Ist-Prozess-Workshops durchführen",
+                        "description": "Je Fachbereich ein halbtägiger Workshop mit den Key-Usern, Ergebnisse als Prozessdiagramme dokumentieren."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Soll-Prozesse im ERP-Standard abbilden",
+                        "description": "Ist-Prozesse gegen den ERP-Standard spiegeln, Abweichungen bewerten und Anpassungsbedarf klassifizieren."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Fachkonzept erstellen und abstimmen",
+                        "description": "Fachkonzept inklusive Abnahmeszenarien je Prozess schreiben, Review mit dem Kunden, Freigabe einholen."
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20240722-0003",
+                "title": "Systemkonfiguration und Schnittstellenentwicklung",
+                "description": "Enthält die Konfiguration der ERP-Module Vertrieb, Auftragsabwicklung, Einkauf und Lager gemäß Fachkonzept, die Entwicklung der bidirektionalen Schnittstelle zum CAD/PDM-System für Stücklisten und Zeichnungsstände sowie die Erstellung der kundenspezifischen Belegdrucke. Nicht enthalten sind Anpassungen am CAD/PDM-System selbst, die Anbindung an die Finanzbuchhaltung und individuelle Programmierungen außerhalb des Fachkonzepts.",
+                "estimated_hours": 420,
+                "documented_hours": 465,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Konfiguration Vertrieb und Auftragsabwicklung",
+                        "description": "Einrichtung von Angebots-, Auftrags- und Lieferbelegen, Preisfindung, Varianten und Workflow-Freigaben.",
+                        "estimated_hours": 140,
+                        "documented_hours": 150,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Belegarten und Belegfluss einrichten",
+                                "description": "Angebot, Auftrag, Lieferschein und Rechnung mit Folgebelegen und Statusmodell konfigurieren."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Preisfindung und Variantenkonfigurator",
+                                "description": "Preislisten, Rabattstaffeln und Merkmalsleisten für Sondermaschinen-Varianten hinterlegen."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Freigabe-Workflows einrichten",
+                                "description": "Freigabe von Aufträgen ab definierten Wertgrenzen durch Vertriebsleitung abbilden."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Konfiguration Einkauf und Lager",
+                        "description": "Einrichtung von Bestellwesen, Wareneingang, Lagerorten und Bestandsführung inklusive Mindestbestandssteuerung.",
+                        "estimated_hours": 110,
+                        "documented_hours": 98,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Bestellprozess und Lieferantenstamm",
+                                "description": "Bestellanforderung, Bestellung und Wareneingangsbuchung mit Lieferantenbewertung konfigurieren."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Lagerstruktur und Bestandsführung",
+                                "description": "Lagerorte, Lagerplätze und Chargenführung anlegen, Mindestbestände und Bestellvorschläge einrichten."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Schnittstelle CAD/PDM",
+                        "description": "Entwicklung des Stücklisten- und Zeichnungsabgleichs zwischen PDM und ERP über die REST-API des ERP-Systems.",
+                        "estimated_hours": 120,
+                        "documented_hours": 168,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Schnittstellenspezifikation erstellen",
+                                "description": "Feldmapping für Artikel, Stücklisten und Zeichnungsstände mit dem PDM-Hersteller abstimmen."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Import- und Exportservice entwickeln",
+                                "description": "Service für den zeitgesteuerten Abgleich implementieren, Fehlerprotokollierung und Wiederanlauf vorsehen."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Integrationstest mit Echtdaten",
+                                "description": "Abgleich mit anonymisierten Stücklisten aus der Produktion testen, Sonderfälle wie Mehrfachverwendung prüfen."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Belegdrucke und Formulare",
+                        "description": "Erstellung der kundenspezifischen Druckformulare für Angebot, Auftragsbestätigung, Lieferschein und Bestellung.",
+                        "estimated_hours": 50,
+                        "documented_hours": 49,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Formularlayouts umsetzen",
+                                "description": "Layouts nach Corporate Design des Kunden im Formulardesigner erstellen, mehrsprachige Textbausteine hinterlegen."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20240722-0004",
+                "title": "Datenmigration aus dem Altsystem",
+                "description": "Enthält die Extraktion der Artikel-, Kunden-, Lieferanten- und Stücklistenstammdaten sowie der offenen Aufträge und Bestellungen aus dem Altsystem, die Transformation in das Zielformat, zwei Testmigrationen und die produktive Migration zum Go-Live. Nicht enthalten sind die fachliche Bereinigung der Stammdaten durch den Kunden und die Migration historischer, abgeschlossener Belege.",
+                "estimated_hours": 140,
+                "documented_hours": 131,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Datenextraktion und Mapping",
+                        "description": "Exportskripte für das Altsystem erstellen, Feldmapping auf die ERP-Importvorlagen dokumentieren."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Transformationsskripte entwickeln",
+                        "description": "Bereinigungs- und Umschlüsselungsregeln (Einheiten, Warengruppen, Zahlungsbedingungen) implementieren."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Testmigrationen durchführen",
+                        "description": "Zwei vollständige Testläufe auf dem Testsystem, Fehlerlisten mit den Key-Usern durchgehen."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Produktive Migration zum Go-Live",
+                        "description": "Finale Migration am Cutover-Wochenende, Bestandsabgleich und Freigabe durch den Kunden."
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20240722-0005",
+                "title": "Interne Zeiten",
+                "description": "Projektinterne Aufwände wie Teamabstimmung, interne Dokumentation und Einarbeitung neuer Teammitglieder, die nicht an den Kunden fakturiert werden und daher nicht in eine Aufwandsschätzung einfließen.",
+                "estimated_hours": null,
+                "documented_hours": 64,
+                "billable": false
+            }
+        ]
+    },
+    {
+        "node_type": "Hauptvorgang",
+        "project_number": "V20250210-0001",
+        "customer": "Rheinland Klinikverbund gGmbH",
+        "owner": "Tobias Winkler",
+        "title": "Security-Modernisierung Klinikstandorte",
+        "description": "Modernisierung der IT-Sicherheitsinfrastruktur eines Klinikverbunds mit vier Standorten als Reaktion auf ein KRITIS-Audit. Enthalten sind die Erneuerung der Perimeter-Firewalls mit Netzsegmentierung der Medizintechnik, die Härtung der Backup-Umgebung, ein Penetrationstest der extern erreichbaren Systeme sowie die Aktualisierung der ISMS-Dokumentation. Nicht enthalten sind der Austausch der Access-Switches, Endpoint-Security-Lizenzen und der laufende Betrieb der Systeme nach Projektabschluss.",
+        "is_managed": true,
+        "billable": true,
+        "children": [
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20250210-0002",
+                "title": "Firewall-Erneuerung und Netzsegmentierung",
+                "description": "Enthält die Ablösung der Perimeter-Firewalls an vier Standorten durch ein zentral verwaltetes Cluster, die Bereinigung und Migration des bestehenden Regelwerks sowie die Segmentierung der Medizintechnik-Netze in eigene Sicherheitszonen. Nicht enthalten sind die Verkabelung, der Austausch der Access-Switches und die Abstimmung mit den Medizintechnik-Herstellern zu Gerätefreigaben, die durch den Kunden erfolgt.",
+                "estimated_hours": 260,
+                "documented_hours": 298,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Ist-Aufnahme und Regelwerksbereinigung",
+                        "description": "Export und Analyse der bestehenden Firewall-Regeln, Entfernung ungenutzter Regeln, Dokumentation der Kommunikationsbeziehungen.",
+                        "estimated_hours": 60,
+                        "documented_hours": 84,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Regelwerk exportieren und analysieren",
+                                "description": "Trefferstatistik der Regeln über 90 Tage auswerten, ungenutzte und redundante Regeln markieren."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Kommunikationsmatrix erstellen",
+                                "description": "Erlaubte Verbindungen zwischen Klinik-, Verwaltungs- und Medizintechnik-Netzen mit den Fachverantwortlichen abstimmen."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Cluster-Installation und Cutover",
+                        "description": "Installation des Firewall-Clusters, Einrichtung des zentralen Managements, Migration des bereinigten Regelwerks und Umschaltung je Standort.",
+                        "estimated_hours": 120,
+                        "documented_hours": 132,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Hardware installieren und Cluster konfigurieren",
+                                "description": "Einbau im Rechenzentrum, HA-Konfiguration, Anbindung an das zentrale Management."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Regelwerk migrieren",
+                                "description": "Bereinigtes Regelwerk in die neue Syntax überführen, Objektgruppen vereinheitlichen, Review im Vier-Augen-Prinzip."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Cutover je Standort",
+                                "description": "Umschaltung im abgestimmten Wartungsfenster, Funktionstests mit den Fachabteilungen, Rückfallplan bereithalten."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Segmentierung Medizintechnik",
+                        "description": "Einrichtung eigener VLANs und Sicherheitszonen für Medizingeräte mit restriktiven Regeln gemäß Kommunikationsmatrix.",
+                        "estimated_hours": 80,
+                        "documented_hours": 82,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Zonenkonzept umsetzen",
+                                "description": "VLANs und Zonen je Gerätekategorie anlegen, Regeln aus der Kommunikationsmatrix ableiten."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Geräte umziehen und testen",
+                                "description": "Medizingeräte abteilungsweise in die neuen Segmente verschieben, Funktion mit der Medizintechnik prüfen."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20250210-0003",
+                "title": "Backup-Härtung und Restore-Tests",
+                "description": "Enthält die Einrichtung eines unveränderlichen Backup-Repositories (Immutable Storage), die Umstellung der Datenbanksicherungen des Krankenhausinformationssystems auf ein anwendungskonsistentes Verfahren sowie einen dokumentierten Voll-Restore-Test der kritischen Systeme. Nicht enthalten sind die Beschaffung zusätzlicher Speicherhardware und die laufende Überwachung der Sicherungen nach Projektende.",
+                "estimated_hours": 90,
+                "documented_hours": 76,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Immutable Repository einrichten",
+                        "description": "Repository mit Unveränderbarkeitsfrist konfigurieren, Backup-Jobs der kritischen Systeme darauf umstellen."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Datenbanksicherung KIS umstellen",
+                        "description": "Anwendungskonsistente Sicherung über das Datenbank-Plugin einrichten, Log-Sicherung im 15-Minuten-Takt aktivieren."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Voll-Restore-Test durchführen",
+                        "description": "Wiederherstellung von KIS-Datenbank und Domänencontroller in isolierter Umgebung, Wiederanlaufzeit dokumentieren."
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20250210-0004",
+                "title": "Penetrationstest externe Systeme",
+                "description": "Enthält einen Black-Box-Penetrationstest der aus dem Internet erreichbaren Systeme (Patientenportal, VPN-Gateway, Mailserver, Webauftritt) inklusive Abschlussbericht mit Risikobewertung und Nachtest der als kritisch eingestuften Befunde. Nicht enthalten sind interne Penetrationstests, Social-Engineering-Tests und die Behebung der gefundenen Schwachstellen.",
+                "estimated_hours": 70,
+                "documented_hours": 68,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Scope und Freigaben abstimmen",
+                        "description": "Zielsysteme, Testzeitraum und Quell-IP-Adressen mit Kunde und Hosting-Dienstleister schriftlich festlegen."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Test durchführen",
+                        "description": "Reconnaissance, Schwachstellenscan und manuelle Ausnutzung der Befunde gemäß OWASP-Methodik."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Bericht und Nachtest",
+                        "description": "Abschlussbericht mit Risikobewertung und Handlungsempfehlungen erstellen, kritische Befunde nach Behebung erneut prüfen."
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20250210-0005",
+                "title": "ISMS-Dokumentation und Awareness",
+                "description": "Enthält die Aktualisierung der Netzwerk- und Sicherheitsdokumentation im ISMS des Kunden nach den umgesetzten Maßnahmen, die Ableitung der Nachweise für das KRITIS-Audit sowie zwei Awareness-Schulungen für Administratoren und Stationsleitungen. Nicht enthalten sind der Aufbau eines vollständigen ISMS, die Auditbegleitung vor Ort und die Erstellung von Nachweisen für Maßnahmen außerhalb dieses Projekts.",
+                "estimated_hours": 50,
+                "documented_hours": 57,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Sicherheitsdokumentation aktualisieren",
+                        "description": "Netzpläne, Zonenkonzept und Backup-Konzept im ISMS fortschreiben, Änderungshistorie pflegen."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Audit-Nachweise zusammenstellen",
+                        "description": "Nachweise für die betroffenen KRITIS-Anforderungen den umgesetzten Maßnahmen zuordnen."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Awareness-Schulungen durchführen",
+                        "description": "Je eine zweistündige Schulung für Administratoren und Stationsleitungen, Schwerpunkt Phishing und Umgang mit Medizingeräten."
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20250210-0006",
+                "title": "Interne Zeiten",
+                "description": "Projektinterne Aufwände wie Teamabstimmung, interne Dokumentation und Abstimmung mit dem Vertrieb zu Nachträgen, die nicht an den Kunden fakturiert werden und daher nicht in eine Aufwandsschätzung einfließen.",
+                "estimated_hours": null,
+                "documented_hours": 41,
+                "billable": false
+            }
+        ]
+    },
+    {
+        "node_type": "Hauptvorgang",
+        "project_number": "V20251103-0001",
+        "customer": "Alpenblick Hotels & Resorts AG",
+        "owner": "Felix Neumann",
+        "title": "Cloud-Migration Microsoft 365 Hotelgruppe",
+        "description": "Migration der E-Mail-, Datei- und Telefoniedienste einer Hotelgruppe mit sieben Häusern von einer lokalen Exchange- und Fileserver-Umgebung nach Microsoft 365. Enthalten sind der Aufbau des Tenants mit Identitätsanbindung, die Migration von rund 450 Postfächern und 6 TB Dateidaten sowie der anschließende Rückbau der Altserver. Nicht enthalten sind Microsoft-Lizenzen, die Migration des Hotel-Property-Management-Systems und die Anbindung der Gäste-WLANs.",
+        "is_managed": true,
+        "billable": true,
+        "children": [
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20251103-0002",
+                "title": "Migration nach Microsoft 365",
+                "description": "Enthält die Einrichtung des Microsoft-365-Tenants mit Entra-ID-Synchronisation und Conditional Access, die Migration der Exchange-Postfächer und öffentlichen Ordner, die Überführung der Fileserver-Daten nach SharePoint und OneDrive sowie die Einführung von Teams-Telefonie mit Rufnummernportierung. Nicht enthalten sind die Migration von Fachanwendungen, die Einrichtung der Gäste-WLANs und Schulungen über die Key-User hinaus.",
+                "estimated_hours": 240,
+                "documented_hours": 271,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Tenant und Identität",
+                        "description": "Aufbau des Tenants, Synchronisation der lokalen Active-Directory-Konten, Conditional-Access-Richtlinien und MFA.",
+                        "estimated_hours": 50,
+                        "documented_hours": 46,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Tenant konfigurieren",
+                                "description": "Domänen verifizieren, Grundeinstellungen und Lizenzzuweisung per Gruppen einrichten."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Entra ID Connect und MFA",
+                                "description": "Verzeichnissynchronisation einrichten, MFA für alle Nutzer ausrollen, Conditional-Access-Richtlinien testen."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Exchange-Online-Migration",
+                        "description": "Hybridbereitstellung, Migration der Postfächer in Wellen je Hotelstandort, Umstellung des Mailflusses.",
+                        "estimated_hours": 80,
+                        "documented_hours": 96,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Hybridkonfiguration einrichten",
+                                "description": "Exchange-Hybrid-Assistent ausführen, Zertifikate und Konnektoren prüfen."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Postfächer in Wellen migrieren",
+                                "description": "Migrationsbatches je Standort anlegen, Cutover nachts durchführen, Outlook-Profile prüfen."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Mailfluss und Schutz umstellen",
+                                "description": "MX-Einträge auf Exchange Online umstellen, SPF/DKIM/DMARC einrichten, Spam-Richtlinien konfigurieren."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Dateimigration nach SharePoint und OneDrive",
+                        "description": "Strukturierung der Fileserver-Daten in SharePoint-Sites je Abteilung und Hotel, Migration mit dem Migration Manager.",
+                        "estimated_hours": 60,
+                        "documented_hours": 79,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Site-Struktur und Berechtigungen entwerfen",
+                                "description": "Bestehende Freigaben analysieren, Sites und Berechtigungsgruppen mit den Abteilungen abstimmen."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Daten migrieren und nachziehen",
+                                "description": "Erstmigration im Hintergrund, Delta-Lauf am Cutover-Tag, Freigaben auf dem Fileserver auf Nur-Lesen setzen."
+                            }
+                        ]
+                    },
+                    {
+                        "node_type": "Arbeitspaket",
+                        "title": "Teams-Telefonie",
+                        "description": "Einführung von Teams Phone mit Direct Routing über den bestehenden SIP-Provider, Rufnummernplan und Portierung.",
+                        "estimated_hours": 50,
+                        "documented_hours": 50,
+                        "children": [
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Rufnummernplan und Anrufwarteschlangen",
+                                "description": "Rufnummernzuordnung je Haus, Rezeptionswarteschlangen und automatische Telefonzentrale einrichten."
+                            },
+                            {
+                                "node_type": "Aufgabe",
+                                "title": "Session Border Controller anbinden",
+                                "description": "Direct Routing zum SIP-Provider konfigurieren, Testanrufe intern und extern durchführen."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20251103-0003",
+                "title": "Rückbau der On-Premises-Server",
+                "description": "Enthält die geordnete Außerbetriebnahme der lokalen Exchange- und Fileserver nach erfolgreicher Migration, die Archivierung der letzten Vollsicherung auf ein externes Medium sowie die Bereinigung der verbleibenden Virtualisierungsumgebung und des Storage-Systems. Nicht enthalten sind die Entsorgung der Hardware, der Rückbau des lokalen Active Directory und die Anpassung der Backup-Verträge des Kunden.",
+                "estimated_hours": 40,
+                "documented_hours": 36,
+                "billable": true,
+                "children": [
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Letzte Vollsicherung archivieren",
+                        "description": "Vollsicherung der Altserver erstellen, auf externes Medium auslagern und Wiederherstellbarkeit stichprobenartig prüfen."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Exchange-Server außer Betrieb nehmen",
+                        "description": "Hybridkonfiguration zurückbauen, letzten Exchange-Server sauber deinstallieren, Empfängerverwaltung dokumentieren."
+                    },
+                    {
+                        "node_type": "Aufgabe",
+                        "title": "Fileserver und Storage bereinigen",
+                        "description": "Fileserver-VMs abschalten und nach Karenzzeit löschen, freigewordene Storage-Kapazität den verbleibenden Systemen zuweisen."
+                    }
+                ]
+            },
+            {
+                "node_type": "Leistungsbereich",
+                "project_number": "V20251103-0004",
+                "title": "Interne Zeiten",
+                "description": "Projektinterne Aufwände wie Teamabstimmung, interne Dokumentation und Übergabe an den Managed-Services-Betrieb, die nicht an den Kunden fakturiert werden und daher nicht in eine Aufwandsschätzung einfließen.",
+                "estimated_hours": null,
+                "documented_hours": 28,
+                "billable": false
+            }
+        ]
+    }
+]
